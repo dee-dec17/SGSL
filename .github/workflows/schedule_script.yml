@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          path: SGSL  # ✅ Force it to use a single SGSL folder
 
       - name: Change to correct working directory
         run: cd $GITHUB_WORKSPACE && ls -R 
@@ -30,5 +32,6 @@ jobs:
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
         run: |
-          cd $GITHUB_WORKSPACE  # ✅ Ensure correct directory
-          python extract_pdf.py  # ✅ Run the script
+          cd SGSL  # ✅ Go to the correct directory
+          python extract_pdf.py  # ✅ Run script
+
