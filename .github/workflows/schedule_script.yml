@@ -1,26 +1,28 @@
-name: Run Python Script Daily
+name: Send Email with PDFs
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # Runs daily at 5 AM UTC (11 AM IST)
-
-  workflow_dispatch:  # Allows manual triggering from GitHub Actions UI
+    - cron: "0 5 * * *"  # Runs every day at 11 AM UTC (convert to local timezone if needed)
 
 jobs:
-  run-script:
+  send_email:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set Up Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
-      - name: Install Dependencies
-        run: pip install requests smtplib email  # Add other dependencies if needed
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt  # ✅ Install dependencies
 
-      - name: Run Python Script
-        run: python exctract_pdf.py
+      - name: Run Python script
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
+        run: python extract_pdf.py  # ✅ Run your script
