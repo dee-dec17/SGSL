@@ -3,6 +3,7 @@ name: Send Email with PDFs
 on:
   schedule:
     - cron: "0 5 * * *"  # Runs every day at 5 AM UTC (convert to local timezone if needed)
+  workflow_dispatch:
 
 jobs:
   send_email:
