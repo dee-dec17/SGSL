@@ -20,9 +20,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt  # ✅ Install dependencies
+          pip install -r requirements.txt 
 
       - name: Run Python script
         env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
-        run: python extract_pdf.py  # ✅ Run your script
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }} 
+        run: python extract_pdf.py 
