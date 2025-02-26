@@ -13,9 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Change to correct working directory
-        run: cd $GITHUB_WORKSPACE && ls -R 
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -26,8 +23,11 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt  # ✅ Updated path
 
+      - name: Change to correct working directory
+        run: cd $GITHUB_WORKSPACE && ls -R 
+
       - name: Run Python script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
-        run: python ./SGSL/extract_pdf.py
+        run: python extract_pdf.py
 
