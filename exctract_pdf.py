@@ -30,7 +30,12 @@ for url in pdf_urls:
 import sendgrid # type: ignore
 from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType # type: ignore
 
-SENDGRID_API_KEY = "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"  # Replace with your API key - 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
+# ✅ Load API Key from Environment Variable
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")  # Read from GitHub Secrets
+
+if not SENDGRID_API_KEY:
+    raise ValueError("❌ ERROR: SendGrid API Key is missing!")
+
 SENDER_EMAIL = "developer.sgsl.auto@gmail.com"  # Replace with verified SendGrid email
 RECEIVER_EMAIL = ["deekshitha.kolusu@gmail.com", "anudeep833@gmail.com"]
 
