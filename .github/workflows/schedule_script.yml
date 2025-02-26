@@ -29,7 +29,5 @@ jobs:
       - name: Run Python script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
-        run: |
-          cd SGSL  # ✅ Move into the correct directory
-          python extract_pdf.py
+        run: python ./SGSL/extract_pdf.py
 
