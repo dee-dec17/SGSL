@@ -29,5 +29,5 @@ jobs:
       - name: Run Python script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        run: python extract_pdf.py
+        run: python exctract_pdf.py
 
