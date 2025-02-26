@@ -30,4 +30,4 @@ jobs:
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
         run: python extract_pdf.py
-        working-directory: $GITHUB_WORKSPACE
+        working-directory: ${{ github.workspace }}
