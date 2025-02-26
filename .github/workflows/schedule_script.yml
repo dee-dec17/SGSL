@@ -1,4 +1,4 @@
-name: Send Email with PDFs
+name: Run Python Script Daily
 
 on:
   schedule:
