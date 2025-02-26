@@ -2,7 +2,7 @@ name: Send Email with PDFs
 
 on:
   schedule:
-    - cron: "0 5 * * *"  # Runs every day at 5 AM UTC (convert to local timezone if needed)
+    - cron: "0 5 * * *"
   workflow_dispatch:
 
 jobs:
@@ -21,13 +21,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt  # ✅ Updated path
+          pip install -r requirements.txt
 
-      - name: Change to correct working directory
-        run: cd $GITHUB_WORKSPACE && ls -R 
+      - name: Debug list files
+        run: ls -R ${{ github.workspace }}
 
       - name: Run Python script
         env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
-        working-directory: ${{ github.workspace }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
         run: python extract_pdf.py
