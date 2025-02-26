@@ -29,7 +29,5 @@ jobs:
       - name: Run Python script
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}  # ✅ Use GitHub Secret
-        run: |
-          cd $GITHUB_WORKSPACE  # ✅ This automatically sets the correct path
-          python extract_pdf.py
+        run: python extract_pdf.py
 
